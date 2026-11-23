@@ -1,0 +1,24 @@
+{
+  "name": "skryvo-action",
+  "version": "1.0.0",
+  "description": "GitHub Action: an article and posts in your brand's voice from each release, left in Skryvo for approval.",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "esbuild src/main.js --bundle --platform=node --target=node22 --format=esm --outfile=dist/index.js",
+    "test": "node --test test/run.test.js"
+  },
+  "author": "Flutter Studio LLC <support@skryvo.ai>",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.25.12"
+  },
+  "private": true,
+  "type": "module",
+  "homepage": "https://skryvo.ai/docs/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skryvo/skryvo-action.git"
+  }
+}

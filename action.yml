@@ -1,0 +1,69 @@
+name: Skryvo release article and posts
+description: Plans and writes an article from release notes and drafts posts in your brand's voice, left in Skryvo for approval.
+author: Flutter Studio LLC
+branding:
+  icon: edit-3
+  color: blue
+
+inputs:
+  api-key:
+    description: A Skryvo API key (sk_skryvo_…) from Settings › API & agents. Keep it in a secret.
+    required: true
+  brand-id:
+    description: The brand to write as. Empty uses the account's default brand.
+    required: false
+    default: ""
+  article:
+    description: Plan and write an article (two generations). "false" drafts posts only.
+    required: false
+    default: "true"
+  platforms:
+    description: Platforms to draft posts for, comma-separated (for example "linkedin, bluesky"). Empty drafts no posts.
+    required: false
+    default: ""
+  pictures:
+    description: With article "false", "true" designs a picture with each post, spending image credits.
+    required: false
+    default: "false"
+  topic:
+    description: What to write about. On a release, defaults to "What's new in <repo> <tag> <name>".
+    required: false
+    default: ""
+  notes:
+    description: The facts to write from. On a release, defaults to the release notes (first 2000 characters).
+    required: false
+    default: ""
+  source-url:
+    description: A public page Skryvo reads for the article. On a release, defaults to the release's page.
+    required: false
+    default: ""
+  wait:
+    description: Wait for the article to be written, so posts can be drafted from it.
+    required: false
+    default: "true"
+  timeout-minutes:
+    description: How long to wait for the article.
+    required: false
+    default: "25"
+  poll-seconds:
+    description: How often to check on the article.
+    required: false
+    default: "30"
+
+outputs:
+  plan-id:
+    description: The article plan's id.
+  article-id:
+    description: The article's id, for the API's article routes.
+  article-status:
+    description: done, writing or failed.
+  article-title:
+    description: The finished article's title.
+  article-url:
+    description: The article in Skryvo, where it is reviewed and published.
+  posts:
+    description: 'The drafted posts as JSON: [{platform, text, error, open_in_skryvo}].'
+
+runs:
+  using: node24
+  main: dist/index.js
